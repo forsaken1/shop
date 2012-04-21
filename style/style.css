@@ -1,0 +1,102 @@
+﻿#goodTable  {
+	width: 100%;
+	border-left: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+}
+
+#goodTable  td {
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+#personalTable  {
+	width: 100%;
+	border-left: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+}
+
+#personalTable  td {
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+#cardTable  {
+	width: 100%;
+	border-left: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+}
+
+#cardTable  td {
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+#main {
+	width: 100%;
+}
+
+#leftBlock {
+	width: 200px;
+	border-right: 2px solid #ccc;
+}
+
+#rightBlock {
+	width: 200px;
+	border-left: 2px solid #ccc;
+}
+
+#logoBlock {
+	width: 200px;
+	border-right: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
+}
+
+#authBlock {
+	width: 200px;
+	border-left: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
+}
+
+#headerBlock {
+	border-bottom: 2px solid #ccc;
+}
+
+#itemBlock {
+	border: 1px solid #ccc;
+	margin-top: 2px;
+}
+
+#itemBlock  p {
+	padding: 10px;
+	text-indent: 10px; 
+}
+
+#header {
+	font-size: 40pt;
+	text-decoration: none;
+}
+
+#authModule  input{
+	width: 200px;
+}
+
+#randomGood  img{
+	padding-left: 50px;
+}
+
+#randomGood {
+	border-bottom: 2px solid #ccc;
+}
+
+.pageNumber {
+	font-size: 16pt;
+	padding-left: 5px;
+}
+
+.buyCount {
+	width: 85px;
+}
+
+.goodHeader {
+	
+}

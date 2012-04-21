@@ -1,0 +1,46 @@
+﻿#mainMenu {
+	margin-top: -20px;
+}
+
+#mainMenu  ul {
+	margin: 0px;
+	padding: 0px;
+	width: 200px;
+	list-style: none;
+}
+
+#mainMenu  ul li {
+	position: relative;
+	border-bottom: 1px solid #ccc;
+}
+
+#mainMenu  li ul{
+	position: absolute;
+	left: 200px;
+	top: 0;
+	display: none;
+}
+
+#mainMenu  ul li a {
+	display: block;
+    text-decoration: none;
+	color: black;
+	background: white;
+	padding: 5px;
+}
+
+#mainMenu  li:hover ul { 
+	display: block; 
+	border: solid 1px;
+}
+
+#mainMenu li:hover a {
+	color: black;
+	font-weight: bolder;
+} 
+
+#mainMenu  li:hover ul a:hover {
+	color: black;
+	background: #cccccc;
+	font-weight: bolder;
+}
