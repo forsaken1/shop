@@ -2,10 +2,9 @@
 	include_once('templates/template.php'); 
 	function content() { 
 		if(isset($_SESSION['id']) && GetLevel($_SESSION['login']) == '1')  { 
-			$db = new PDO('mysql:host=localhost;dbname=base', 'root', '');
+			$db = GetDatabase();
 			$request = $db->query('SELECT * FROM cards');
 			$result = $request->fetchAll();
-			$db = null;
 			
 			print '<h1>Заказы</h1>';
 			print '<table id = "ordersTable" cellspacing = 0>';

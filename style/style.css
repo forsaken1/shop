@@ -1,4 +1,26 @@
-﻿#goodTable  {
+﻿#ordersTable  {
+	width: 100%;
+	border-left: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+}
+
+#ordersTable  td {
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+#userTable  {
+	width: 100%;
+	border-left: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+}
+
+#userTable  td {
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+#goodTable  {
 	width: 100%;
 	border-left: 1px solid #ccc;
 	border-top: 1px solid #ccc;
@@ -33,6 +55,7 @@
 
 #main {
 	width: 100%;
+	margin-top: -25px;
 }
 
 #leftBlock {

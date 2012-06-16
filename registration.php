@@ -70,6 +70,7 @@
 			data: 'n=1&name='+field[0]+'&surname='+field[1]+'&mail='+field[2]+'&phone='+field[3]+'&city='+field[4]+'&index='+field[5]+'&other='+field[6]+'&login='+field[7]+'&password='+field[8],
 			complete: function() {
 				location = 'http://localhost/mysite/index.php';
+				$.stickr({ note: 'Регистрация прошла успешно', time: 2000 });
 			}
 		});	
 	}

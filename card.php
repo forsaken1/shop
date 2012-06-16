@@ -2,11 +2,10 @@
 	include_once('templates/template.php'); 
 	function content() { 
 		if(isset($_SESSION['id'])) { 
-			$db = new PDO('mysql:host=localhost;dbname=base', 'root', '');
+			$db = GetDatabase();
 			$request = $db->prepare('SELECT name, count, good_id FROM cards WHERE buyer = ?');
 			$request->execute(array($_SESSION['login']));
-			$result = $request->fetchAll();
-			$db = null;
+			$result = $request->fetchAll();	
 			
 			print '<h1>Ваши заказы</h1>';
 			print '<table id = "cardTable">';

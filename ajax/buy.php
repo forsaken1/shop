@@ -1,6 +1,7 @@
 ﻿<?php
 	session_start();
-	$db = new PDO('mysql:host=localhost;dbname=base', 'root', '');
+	include_once('php/lib.php');
+	$db = getDatabase();
 	
 	if(isset($_SESSION['id'])) {
 		$request = $db->prepare('INSERT INTO `base`.`cards` (buyer, good_id, name, count) VALUES (?, ?, ?, ?)');

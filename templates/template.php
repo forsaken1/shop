@@ -1,5 +1,6 @@
 ﻿<?php 
 	session_start(); 
+	include_once('php/lib.php');
 ?>
 <html>
   <head>
@@ -27,15 +28,6 @@
 	  </tr>
 	</table>
 	<script src = 'js/jquery.js'></script>
+	<script src = 'js/jquery.stickr.min.js'></script>
   </body>
 </html>
-<?php
-	function GetLevel($sessionLogin) {
-		$db = new PDO('mysql:host=localhost;dbname=base', 'root', '');
-		$request = $db->prepare('SELECT level FROM users WHERE login = ?');
-		$request->execute(array($sessionLogin));
-		$result = $request->fetch();
-		$db = null;
-		return $result['level'];
-	}
-?>

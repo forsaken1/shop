@@ -2,11 +2,10 @@
 	print "<div id = 'authModule'>";
 	if(isset($_SESSION['id'])) {
 		print 'Здравствуйте, '.$_SESSION['login'].'<br>';
-		$db = new PDO('mysql:host=localhost;dbname=base', 'root', '');
+		$db = GetDatabase();
 		$request = $db->prepare('SELECT level FROM users WHERE login = ?');
 		$request->execute(array($_SESSION['login']));
 		$result = $request->fetch();
-		$db = null;
 		if($result['level'] != '1') print '<a href = "personal.php">Войти в личный кабинет</a><br><a href = "card.php">Корзина</a><br>';
 		else print '<a href = "admin.php">Войти в панель управления</a><br>';
 		print '<a href = "modules/deauth.php">Выйти</a>';
@@ -22,17 +21,25 @@
 ?>
 <script>
 	function auth() {
-		var login = $('#loginA').val();
-		var password = $('#passwordA').val();
+		var login = $('#loginA');
+		var password = $('#passwordA');
 		
 		$.ajax({
 			type: 'GET', 
 			url: 'ajax/checkAuth.php',
 			async: false,
-			data: 'login='+login+'&password='+password,
-			success: function(msg) {
-				if(msg != 'OK') alert(msg);
-				else location = 'http://localhost/mysite/personal.php';
+			data: 'login='+login.val()+'&password='+password.val(),
+			dataType: 'json',
+			success: function(answer) {
+				if(answer.msg != 'OK') {
+					login.val('');
+					password.val('');
+					$.stickr({ note: answer.msg, time: 2000, className: 'next'});
+				}
+				else { 
+					$.stickr({ note: 'Вход произведен', time: 1000});
+				    location = 'personal.php';
+				}
 			},
 			error: function(msg) {
 				alert(msg);

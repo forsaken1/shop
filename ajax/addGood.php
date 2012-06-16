@@ -1,5 +1,6 @@
 ﻿<?php 
-	$db = new PDO('mysql:host=localhost;dbname=base', 'root', '');
+	include_once('php/lib.php');
+	$db = getDatabase();
 	
 	if(isset($_FILES['file'])) $typeImg = typeOfImage($_FILES['file']); else $typeImg = false;
 	
@@ -14,13 +15,13 @@
 		$pathImgMin = 'img/'.$id.'_min'.$typeImg;
 	}
 	else {
-		$originalImgPath = 'C:/xampp/htdocs/MySite/img/null.jpg';
-		$minimalImgPath = 'C:/xampp/htdocs/MySite/img/null.jpg';
+		$originalImgPath = 'C:/xampp/htdocs/MySite/img/no_image.jpg';
+		$minimalImgPath = 'C:/xampp/htdocs/MySite/img/no_image_min.jpg';
 	}
 
 	$request = $db->prepare("INSERT INTO `base`.`items` (`id`, `name`, `info`, `about`, `price`, `count`, `category`, `img`, `img_min`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 	$request->execute(array($id, $_POST['name'], $_POST['info'], $_POST['about'], $_POST['price'], $_POST['count'], $_POST['cat'], $pathImg, $pathImgMin));
-	$db = null;
+
 	header('Location: http://localhost/mysite/add.php');
 	
 	function typeOfImage($file) {

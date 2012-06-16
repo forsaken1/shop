@@ -2,11 +2,10 @@
 	include_once('templates/template.php');
 	function content() {
 		if(isset($_SESSION['id'])) {
-			$db = new PDO('mysql:host=localhost;dbname=base', 'root', '');
+			$db = GetDatabase();
 			$request = $db->prepare('SELECT name, surname, phone, city, post_index, other FROM users WHERE login = ?');
 			$request->execute(array($_SESSION['login']));
 			$result = $request->fetch();
-			$db = null;
 	
 			print '<div><h1>Ваш личный кабинет</h1>';
 			print '<b>Ваши личные данные</b>';

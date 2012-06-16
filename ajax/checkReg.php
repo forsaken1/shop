@@ -1,11 +1,14 @@
 ﻿<?php
-	$db = new PDO('mysql:host=localhost;dbname=base', 'root', '');
+	include_once('C:/xampp/htdocs/mysite/php/lib.php');
+	$db = getDatabase();
+	
 	if($_GET['n'] == '0') {
 		if(checkLogin()) echo 'OK';
 		else echo 'Аккаунт с данным логином уже зарегистрирован';
 	}
 	
 	function checkLogin() {
+		global $db;
 		$request = $db->prepare('SELECT login FROM users WHERE login = ?');
 		$request->execute(array($_GET['login']));
 		$result = $request->fetch();
@@ -19,5 +22,4 @@
 			$request->execute(array($_GET['name'], $_GET['surname'], $_GET['mail'], $_GET['phone'], $_GET['city'], $_GET['index'], $_GET['other'], $_GET['login'], md5($_GET['password'])));
 		}
 	}
-	$db = null;
 ?>

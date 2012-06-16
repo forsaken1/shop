@@ -1,27 +1,25 @@
 ﻿<?php
-	$db = new PDO('mysql:host=localhost;dbname=base', 'root', '');
-	$login = $_GET['login'];
-	$password = md5($_GET['password']);
+	include_once('C:/xampp/htdocs/mysite/php/lib.php');
 	
-	function checkLoginPass() {
-		global $login, $password, $db;
+	function checkLoginAndPass() {
+		$db = GetDatabase();
 		$request = $db->prepare('SELECT login, password FROM users WHERE login = ? AND password = ?');
-		$request->execute(array($login, $password));
+		$request->execute(array($_GET['login'], md5($_GET['password'])));
 		$result = $request->fetch();
-		if(!$result['login']) { echo 'Неверная комбинация "логин-пароль"'; return 0; }
+		if(!$result['login']) { 
+			echo json_encode(array('msg' => 'Неверная комбинация "логин-пароль"')); 
+			return 0; 
+		}
 		return 1;
 	}
 	
 	function authentification() {
-		global $login;
-		if(checkLoginPass()) {
+		if(checkLoginAndPass()) {
 			session_start();
-			$_SESSION['id'] = md5($login.rand());
-			$_SESSION['login'] = $login;
-			echo 'OK';
+			$_SESSION['id'] = md5($_GET['login'].rand());
+			$_SESSION['login'] = $_GET['login'];
+			echo json_encode(array('msg' => 'OK'));
 		}
 	}
-	
 	authentification();
-	$db = null;
 ?>

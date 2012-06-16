@@ -3,17 +3,17 @@
 <?php
 	include_once('templates/template.php');
 	function content() {
-		if(isset($_SESSION['id']) && GetLevel($_SESSION['login']) == '1') {
-				$db = new PDO('mysql:host=localhost;dbname=base', 'root', '');
+		if(isset($_SESSION['id']) && GetLevel($_SESSION['login']) == '1') { 
+			print '<div><h1>Панель администрирования</h1>';
+?>
+			<table id = "userTable"></table> <?php
+				/*$db = GetDatabase();
 				$request = $db->query('SELECT login, level, name, surname, email FROM users');
 				$result = $request->fetchAll();
-				$countOfGoodsOnList = 20;
 				$field = array('login', 'level', 'name', 'surname', 'email');
+				
 				print '<div><h1>Панель администрирования</h1>';
-				//print '<table id = "userTable"></table>';
-				//$countOfList = $request->rowCount() / $countOfGoodsOnList;
-				print '';
-				print '<table id = "adminModule" cellspacing = 0>';
+				print '<table id = "userTable" cellspacing = 0>';
 				print '<tr><td>Логин</td><td>Приоритет</td><td>Имя</td><td>Фамилия</td><td>E-mail</td><td>Операции</td></tr>';
 				for($i = 0; $i < $request->rowCount(); $i++) {
 					print '<tr>';
@@ -22,9 +22,7 @@
 						<a align = "center" href = "">Редактировать</a><br>
 						<a align = "right" href = "">Удалить</a></td></tr>';
 				}
-				print '</table></div>';
-
-				$db = null;
+				print '</table></div>';*/
 		}
 		else header('Location: noauth.php');
 	}
@@ -32,28 +30,24 @@
 <script src = "js/grid.locale-ru.js" type = "text/javascript"></script>
 <script src = "js/jquery.jqGrid.min.js" type = "text/javascript"></script>
 <script>
-	/*function userTable() {
-		jQuery("#userTable").jqGrid({        
-			url:'getTable.php',
-			datatype: "json",
-			colNames:['Inv No','Date', 'Client', 'Amount','Tax','Total','Notes'],
-			colModel:[
-				{name:'id',index:'id', width:55},
-				{name:'invdate',index:'invdate', width:90},
-				{name:'name',index:'name', width:100},
-				{name:'amount',index:'amount', width:80, align:"right"},
-				{name:'tax',index:'tax', width:80, align:"right"},		
-				{name:'total',index:'total', width:80,align:"right"},		
-				{name:'note',index:'note', width:150, sortable:false}		
-			],
-			rowNum:10,
-			rowList:[10,20,30],
-			pager: '#pager',
-			sortname: 'id',
-			viewrecords: true,
-			sortorder: "desc",
-			caption:"Simple data manipulation"
-		});
-	}
-	userTable();*/
+	jQuery("#userTable").jqGrid({        
+		url:'getUserList.php',
+		datatype: "json",
+		colNames:['Логин','Приоритет', 'Имя', 'Фамилия','E-mail','Операции'],
+		colModel:[
+			{name:'login',index:'id', width:100},
+			{name:'priority',index:'invdate', width:100},
+			{name:'name',index:'name', width:100},
+			{name:'surname',index:'amount', width:100, align:"right"},
+			{name:'email',index:'tax', width:100, align:"right"},		
+			{name:'operation',index:'total', width:100,align:"right"}	
+		],
+		rowNum:10,
+		rowList:[10,20,30],
+		pager: '#pager',
+		sortname: 'id',
+		viewrecords: true,
+		sortorder: "desc",
+		caption: "Зарегистрированные пользователи сайта"
+	});
 </script>

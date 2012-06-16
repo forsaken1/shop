@@ -1,7 +1,7 @@
 ﻿<?php 
 	include_once('templates/template.php'); 
 	function content() { 
-	    $db = new PDO('mysql:host=localhost;dbname=base', 'root', '');
+	    $db = GetDatabase();
 		$request = $db->prepare('SELECT id, name, info, about, price, count, img FROM items WHERE id = ?');
 		$request->execute(array($_GET['item']));
 		$result = $request->fetch();
@@ -15,7 +15,6 @@
 		print '<b>На складе: '.$result['count'].'; </b><b>Цена: '.$result['price'].'</b></div>';
 		print '<div id = "itemBlock"><div><p>'.$result['info'].'</p>';
 		print '<p>'.$result['about'].'</p></div></div>';
-		$db = null;
 	}
 ?>
 <script>

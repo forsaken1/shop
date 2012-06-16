@@ -1,6 +1,7 @@
 ﻿ <?php
 	session_start();
-	$db = new PDO('mysql:host=localhost;dbname=base', 'root', '');
+	include_once('php/lib.php');
+	$db = getDatabase();
 	
 	if(isset($_SESSION['id'])) {
 		$request = $db->prepare('DELETE FROM `base`.`cards` WHERE good_id = ? AND buyer = ?');
@@ -8,6 +9,4 @@
 		echo 'Товар удален';
 	}
 	else echo 'Вы не авторизированы на сайте!';
-	
-	$db = null;
 ?>
