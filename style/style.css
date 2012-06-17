@@ -1,4 +1,12 @@
-﻿#ordersTable  {
+﻿#imageBar {
+	width: 100% - 2px;
+	height: 160px;
+	background: lavender;
+	margin-top: 2px;
+	border: 1px solid #ccc;	
+}
+
+#ordersTable  {
 	width: 100%;
 	border-left: 1px solid #ccc;
 	border-top: 1px solid #ccc;
@@ -118,8 +126,4 @@
 
 .buyCount {
 	width: 85px;
-}
-
-.goodHeader {
-	
 }

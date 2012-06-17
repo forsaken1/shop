@@ -1,0 +1,40 @@
+﻿#boardTable  {
+	width: 100%;
+	border-left: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+}
+
+#boardTable  td {
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+#main {
+	width: 100%;
+	margin-top: -25px;
+}
+
+#logoBlock {
+	width: 200px;
+	border-right: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
+}
+
+#authBlock {
+	width: 200px;
+	border-left: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
+}
+
+#headerBlock {
+	border-bottom: 2px solid #ccc;
+}
+
+#header {
+	font-size: 40pt;
+	text-decoration: none;
+}
+
+#authModule  input{
+	width: 200px;
+}

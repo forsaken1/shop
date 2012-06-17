@@ -29,6 +29,7 @@
 		
 	print
 		"<li><a href = 'about.php'>О сайте</a></li>
+		<li><a href = 'forum/main.php'>Форум</a></li>
 	  </ul>
 	</div>";
 ?>
